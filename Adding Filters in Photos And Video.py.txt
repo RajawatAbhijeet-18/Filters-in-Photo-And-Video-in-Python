@@ -1,0 +1,27 @@
+1. import cv2
+2. photo = cv2.imread('Your Image') #Example: Image.jpg
+3. photo = cv2.cvtColor(photo , cv2.COLOR_BGR2RGB)
+4. photo = cv2.cvtColor(photo , cv2.COLOR_BGR2GRAY)
+5. import matplotlib.pyplot as plt
+6. plt.imshow(photo , cmap = 'gray')
+7. cv2.imshow('hi',photo)
+8. cv2.waitKey()
+9. cv2.destroyAllWindows()
+10. import numpy as np
+11. kernal = np.ones( (3,3)) / 25
+12. nphoto = cv2.filter2D(photo , -1 , kernal )
+13. plt.imshow(photo)
+14. k1 = np.array(photo)
+15. k1
+16. cap = cv2.VideoCapture(0)
+17. while True:
+       cap.isOpened()
+       ret , photo = cap.read()
+       nphoto = cv2.filter2D(photo , -1 , kernal )
+       fphoto = cv2.cvtColor(nphoto , cv2.COLOR_RGB2BGR)
+       cv2.imshow('hi',fphoto)
+       if cv2.waitKey(100) & 0xFF == ord('q'):
+           break
+        
+    cap.release()
+    cv2.destroyAllWindows()
